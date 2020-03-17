@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -i pid
+
+if [[ "$1" == +([0-9]) ]]; then
+    	pid="$1"
+else
+   	echo "Usage: ./familyTree pid"
+	exit 0
+fi
+
+echo "$pid"
+
+while [ -f "/proc/$pid/status" ]; do
+    	pid="$(awk '/PPid/ { print $2 }' "/proc/$pid/status")"
+	echo "$pid"
+    	[ "$pid" != '' ]
+done
+

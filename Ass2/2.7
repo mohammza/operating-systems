@@ -1,0 +1,16 @@
+2.7. Multiple  jobs  can  run  in  parallel  and  finish  faster  than  if  they  had  run  sequentially.Suppose  that  two  jobs,  each  needing  20  minutes  of  CPU  time,  start  simultaneously. How long will the last one take to complete if they run sequentially?  How long if they run in parallel?  Assume 50% I/O wait.
+
+If ran sequentially....
+    Given that I/O wait is 50% and CPU time = 20 mins -> Total single job time = 40 mins.
+    Therefore, total time to complete both jobs if done sequentially = 80 mins
+
+
+If ran in parallel...
+    CPU Utilization = 1-P^n ; where P = 0.50 and n = jobs being executed = 2
+                    = 1-(1/2)^2
+                    = 0.75
+    CPU Util/Min    = 0.75/2
+                    = 0.375
+    Total compute time = 20/0.375
+                       = 53.33 mins
+

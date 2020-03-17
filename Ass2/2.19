@@ -1,0 +1,3 @@
+2.19. In Fig. 2-15 the thread creations and messages printed by the threads are interleaved atrandom.  Is there a way to force the order to be strictly thread 1 created, thread 1 printsmessage, thread 1 exits, thread 2 created, thread 2 prints message, thread 2 exists, andso on?  If so, how?  If not, why not?
+
+Yes, there is a way to force the order of thread execution. Thread 2 is created after thread 1 execution finishes, then thread 3 is created after thread 2 execution finishes, and so on. To do this the function pthread_join() would be used to make sure that the calling thread is executed only after another thread completes its execution.
